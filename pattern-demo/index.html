@@ -3,52 +3,64 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Pattern Logic Demo</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Pattern Console Output</title>
+    <style>
+      :root {
+        color-scheme: dark;
+        font-family: Consolas, "Courier New", monospace;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        background: #050505;
+        color: #f2f2f2;
+      }
+
+      main {
+        width: min(900px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 32px 0;
+      }
+
+      .terminal {
+        min-height: calc(100vh - 64px);
+        padding: 22px;
+        border: 1px solid #2b2b2b;
+        background: #0b0b0b;
+      }
+
+      .line {
+        margin: 0 0 12px;
+        color: #9cdcfe;
+        white-space: pre-wrap;
+      }
+
+      pre {
+        margin: 0;
+        color: #ffffff;
+        font-size: 18px;
+        line-height: 1.45;
+        white-space: pre-wrap;
+      }
+
+      .comment {
+        color: #6a9955;
+      }
+    </style>
   </head>
   <body>
-    <main class="shell">
-      <section class="panel">
-        <header>
-          <p class="eyebrow">Question 3</p>
-          <h1>Pattern Logic Demo</h1>
-          <p class="intro">
-            Build an increasing and decreasing text pattern from user inputs.
-          </p>
-        </header>
-
-        <div class="workspace">
-          <form id="pattern-form" class="controls">
-            <label>
-              Character
-              <input name="character" type="text" value="1" maxlength="4">
-            </label>
-
-            <label>
-              Maximum count
-              <input name="maxCount" type="number" value="4" min="1">
-            </label>
-
-            <label>
-              Rounds
-              <input name="rounds" type="number" value="3" min="1">
-            </label>
-
-            <button type="submit">Generate Pattern</button>
-          </form>
-
-          <section class="result" aria-live="polite">
-            <div class="result-header">
-              <h2>Output</h2>
-              <p id="message"></p>
-            </div>
-            <pre id="pattern-output"></pre>
-          </section>
-        </div>
+    <main>
+      <section class="terminal" aria-label="Console output">
+        <p class="line">PS D:\git\programming-skill-test-submission&gt; node answers/pattern.js 1 4 3</p>
+        <p class="line comment">// Output</p>
+        <pre id="output"></pre>
       </section>
     </main>
 
     <script src="pattern.js"></script>
-    <script src="app.js"></script>
+    <script>
+      document.querySelector("#output").textContent = buildPattern("1", 4, 3).join("\n");
+    </script>
   </body>
 </html>

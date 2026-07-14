@@ -34,3 +34,7 @@ function buildPattern(character, maxCount, rounds) {
 if (typeof module !== "undefined") {
   module.exports = { buildPattern, parsePositiveInteger };
 }
+
+if (typeof window !== "undefined") {
+  window.buildPattern = buildPattern;
+}
