@@ -9,6 +9,7 @@
 - `SKILL.md`: workflow สำหรับวิเคราะห์ ออกแบบ เขียน test และ review
 - `PROMPT.md`: prompt หลักที่ใช้ส่งให้ AI
 - `DEMO_CHAT_PROMPT.md`: ข้อความแบบธรรมชาติสำหรับ copy ไปเปิด new chat
+- `aspnet-core-api/`: bonus version ถ้าต้องอธิบายว่าจะทำเป็น C# ASP.NET Core API ยังไง
 
 ## Demo steps
 
