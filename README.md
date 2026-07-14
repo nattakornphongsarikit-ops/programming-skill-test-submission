@@ -1,0 +1,38 @@
+# Programming Skill Test Submission
+
+This workspace contains a complete answer package for the programming skill test.
+
+## Files
+
+- `responsive-form/index.html`: standalone responsive register form
+- `responsive-form/styles.css`: form layout and responsive styles
+- `responsive-form/script.js`: client-side validation
+- `dotnet-submission/`: ASP.NET Core Razor Pages and C# console versions
+- `answers/Programming_Skill_Test_Answers.md`: written answers for all questions
+- `answers/pattern.js`: runnable pattern solution for question 3
+- `answers/database_design.sql`: database design DDL for question 4
+- `answers/cursor_loop.sql`: cursor loop script for question 5
+- `submission/`: screenshots and zipped submission package
+
+## How to run
+
+Open `responsive-form/index.html` in a browser.
+
+Run the pattern answer:
+
+```bash
+node answers/pattern.js 1 4 3
+```
+
+SQL scripts are written for Microsoft SQL Server / T-SQL.
+
+## Git setup
+
+From PowerShell, move into this project folder before running Git commands:
+
+```powershell
+cd "C:\Users\AOS-PC\Documents\Programming Skill Tests"
+git status
+```
+
+Then commit and push to a GitHub repository.
