@@ -8,12 +8,13 @@
 - `REQUIREMENTS.md`: business rules ของการจองโต๊ะ
 - `SKILL.md`: workflow สำหรับวิเคราะห์ ออกแบบ เขียน test และ review
 - `PROMPT.md`: prompt หลักที่ใช้ส่งให้ AI
+- `DEMO_CHAT_PROMPT.md`: ข้อความแบบธรรมชาติสำหรับ copy ไปเปิด new chat
 
 ## Demo steps
 
 1. เปิด new chat ใน AI/Codex
 2. แนบหรือเปิดไฟล์ 4 ไฟล์นี้ให้ AI อ่าน
-3. ส่งข้อความจาก `PROMPT.md`
+3. ส่งข้อความจาก `DEMO_CHAT_PROMPT.md`
 4. ให้ AI สรุป requirement ก่อนเขียน code
 5. ให้ AI สร้าง `reserveTable(input)` และ test ด้วย `node:test`
 6. เปิด test result ให้กรรมการดู
