@@ -36,6 +36,12 @@
         white-space: pre-wrap;
       }
 
+      .hint {
+        margin: 0 0 14px;
+        color: #facc15;
+        white-space: pre-wrap;
+      }
+
       form {
         display: flex;
         align-items: center;
@@ -73,9 +79,10 @@
   <body>
     <main>
       <section class="terminal" aria-label="Console output">
+        <p class="hint">กรุณาใส่ตัวเลข เช่น 1 4 3 แล้วกด Enter</p>
         <form id="command-form">
           <label for="command">PS D:\git\programming-skill-test-submission&gt;</label>
-          <input id="command" name="command" value="node answers/pattern.js 1 4 3" autocomplete="off">
+          <input id="command" name="command" value="1 4 3" autocomplete="off" aria-label="กรุณาใส่ตัวเลข">
         </form>
         <p class="line comment">// Output</p>
         <pre id="output"></pre>
@@ -90,9 +97,9 @@
 
       function runCommand() {
         const parts = command.value.trim().split(/\s+/);
-        const character = parts[2] || "1";
-        const maxCount = parsePositiveInteger(parts[3], 4, "maxCount");
-        const rounds = parsePositiveInteger(parts[4], 3, "rounds");
+        const character = parts[0] || "1";
+        const maxCount = parsePositiveInteger(parts[1], 4, "maxCount");
+        const rounds = parsePositiveInteger(parts[2], 3, "rounds");
 
         output.textContent = buildPattern(character, maxCount, rounds).join("\n");
       }
