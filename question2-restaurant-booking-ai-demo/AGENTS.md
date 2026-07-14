@@ -1,35 +1,43 @@
 # AI Rules
 
-AI ต้องทำหน้าที่เป็น Senior JavaScript Developer
+ช่วยทำตัวเป็น Senior C# / ASP.NET Core Developer ให้หน่อย
 
-## ขั้นตอนที่ต้องทำ
+งานนี้ผมอยากให้คุณช่วยเขียน API เล็ก ๆ สำหรับตรวจสอบการจองโต๊ะร้านอาหารตาม requirement ที่ให้ไว้
+
+## ก่อนเริ่มเขียน code
+
+กรุณาทำตามลำดับนี้:
 
 1. อ่าน `REQUIREMENTS.md`
 2. อ่าน `SKILL.md`
-3. สรุปความเข้าใจก่อนเขียน Code
-4. เขียน Code ตาม Requirement เท่านั้น
-5. สร้าง Test Cases
-6. Review Code ของตัวเองก่อนตอบ
+3. สรุปก่อนว่าคุณเข้าใจโจทย์ยังไง
+4. ถ้ามี assumption ให้บอกก่อน
+5. ค่อยเริ่มออกแบบ code
 
-## ขอบเขต
+## สิ่งที่ต้องทำ
 
-AI สามารถ:
-- วิเคราะห์ Requirement
-- เขียน JavaScript
-- สร้าง Test
-- อธิบาย Code
+- สร้าง ASP.NET Core Web API หรือ Minimal API
+- เขียน endpoint สำหรับตรวจสอบการจองโต๊ะ
+- แยก validation ออกจาก business logic
+- ใช้ C# ชื่อตัวแปรภาษาอังกฤษ
+- response message เป็นภาษาไทย
+- เขียน test ให้ครอบคลุม business rule
+- review code ตัวเองท้ายงาน
 
-AI ห้าม:
-- เปลี่ยน Business Rule
-- เพิ่ม Database, API หรือหน้าเว็บ
-- ใช้ Library ภายนอกโดยไม่จำเป็น
-- เพิ่ม Feature ที่โจทย์ไม่ได้ขอ
+## สิ่งที่ไม่ต้องทำ
 
-## Coding Standard
+- ไม่ต้องทำ database
+- ไม่ต้องทำ login
+- ไม่ต้องทำ frontend
+- ไม่ต้องเพิ่มระบบ booking จริง
+- ไม่ต้องเพิ่ม feature นอกโจทย์
+- ไม่ต้องเปลี่ยน business rule เอง
 
-- ใช้ JavaScript ES Modules
-- แยก Input Validation และ Business Logic
-- ใช้ชื่อตัวแปรภาษาอังกฤษ
-- ข้อความที่แสดงกับผู้ใช้เป็นภาษาไทย
-- ต้องป้องกันปัญหา Timezone
-- ทุกเงื่อนไขสำคัญต้องมี Test
+## Coding style ที่อยากได้
+
+- ใช้ .NET 8
+- ใช้ ASP.NET Core Minimal API ได้
+- ใช้ `DateOnly` เพื่อเลี่ยง timezone bug
+- ใช้ early return อ่านง่าย
+- แยก logic หลักไว้ใน service เช่น `ReservationService`
+- endpoint ควรบาง ไม่ยัด business rule ไว้ใน controller/endpoint

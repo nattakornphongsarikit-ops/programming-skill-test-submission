@@ -1,51 +1,73 @@
-# Restaurant Table Booking Requirements
+# Restaurant Table Booking API Requirements
 
-## Input
+ผมอยากได้ API สำหรับตรวจสอบว่า request การจองโต๊ะผ่านเงื่อนไขหรือไม่
 
-```js
+## API
+
+ให้สร้าง endpoint:
+
+```http
+POST /reservations
+Content-Type: application/json
+```
+
+## Request Body
+
+```json
 {
-  reservationDate: "2026-07-16",
-  tableType: "window",
-  deposit: 1000
+  "reservationDate": "2026-07-16",
+  "tableType": "window",
+  "deposit": 1000
 }
 ```
 
-## Business Rules
+## Field rules
 
-1. โต๊ะริมหน้าต่าง (`window`) จองได้เฉพาะวันจันทร์-พฤหัสบดี
-2. โต๊ะริมหน้าต่างต้องมัดจำตั้งแต่ 1,000 บาทขึ้นไป
-3. โต๊ะทั่วไป (`regular`) จองได้ทุกวันและไม่มีขั้นต่ำมัดจำ
-4. วันที่ต้องเป็นรูปแบบ `YYYY-MM-DD` และเป็นวันที่จริง
-5. `tableType` ต้องเป็น `window` หรือ `regular`
-6. `deposit` ต้องเป็นตัวเลขและต้องไม่ติดลบ
+- `reservationDate` ต้องเป็น string รูปแบบ `YYYY-MM-DD`
+- `reservationDate` ต้องเป็นวันที่จริง
+- `tableType` รับได้แค่ `window` หรือ `regular`
+- `deposit` ต้องเป็นตัวเลข
+- `deposit` ต้องไม่ติดลบ
 
-## Expected Output
+## Business rules
 
-สำเร็จ:
+1. โต๊ะริมหน้าต่าง (`window`) จองได้เฉพาะวันจันทร์ถึงวันพฤหัสบดี
+2. โต๊ะริมหน้าต่างต้องมัดจำอย่างน้อย 1,000 บาท
+3. โต๊ะทั่วไป (`regular`) จองได้ทุกวัน
+4. โต๊ะทั่วไปไม่มีขั้นต่ำมัดจำ
+5. การเช็กวันต้องไม่พังเพราะ timezone
 
-```js
+## Success response
+
+HTTP 200
+
+```json
 {
-  success: true,
-  code: "BOOKING_APPROVED",
-  message: "จองโต๊ะสำเร็จ"
+  "success": true,
+  "code": "BOOKING_APPROVED",
+  "message": "จองโต๊ะสำเร็จ"
 }
 ```
 
-ไม่สำเร็จ:
+## Error response
 
-```js
+HTTP 400
+
+```json
 {
-  success: false,
-  code: "ERROR_CODE",
-  message: "เหตุผลที่ไม่สามารถจองได้"
+  "success": false,
+  "code": "ERROR_CODE",
+  "message": "เหตุผลที่ไม่สามารถจองได้"
 }
 ```
 
-## Acceptance Criteria
+## Acceptance criteria
 
-- วันจันทร์ + window + 1000 = ผ่าน
-- วันพฤหัสบดี + window + 1000 = ผ่าน
-- วันศุกร์ + window + 1000 = ไม่ผ่าน
-- วันจันทร์ + window + 999 = ไม่ผ่าน
-- วันเสาร์ + regular + 0 = ผ่าน
-- วันที่ผิด, ประเภทโต๊ะผิด, มัดจำติดลบ = ไม่ผ่าน
+- วันจันทร์ + `window` + `1000` = ผ่าน
+- วันพฤหัสบดี + `window` + `1000` = ผ่าน
+- วันศุกร์ + `window` + `1000` = ไม่ผ่าน
+- วันจันทร์ + `window` + `999` = ไม่ผ่าน
+- วันเสาร์ + `regular` + `0` = ผ่าน
+- วันที่ผิด = ไม่ผ่าน
+- table type ผิด = ไม่ผ่าน
+- deposit ติดลบ = ไม่ผ่าน

@@ -9,7 +9,7 @@
 - `SKILL.md`: workflow สำหรับวิเคราะห์ ออกแบบ เขียน test และ review
 - `PROMPT.md`: prompt หลักที่ใช้ส่งให้ AI
 - `DEMO_CHAT_PROMPT.md`: ข้อความแบบธรรมชาติสำหรับ copy ไปเปิด new chat
-- `aspnet-core-api/`: bonus version ถ้าต้องอธิบายว่าจะทำเป็น C# ASP.NET Core API ยังไง
+- `aspnet-core-api/`: ตัวอย่าง C# ASP.NET Core API ที่ทำไว้ให้ดู
 
 ## Demo steps
 
@@ -17,9 +17,9 @@
 2. แนบหรือเปิดไฟล์ 4 ไฟล์นี้ให้ AI อ่าน
 3. ส่งข้อความจาก `DEMO_CHAT_PROMPT.md`
 4. ให้ AI สรุป requirement ก่อนเขียน code
-5. ให้ AI สร้าง `reserveTable(input)` และ test ด้วย `node:test`
+5. ให้ AI สร้าง ASP.NET Core API endpoint `POST /reservations` พร้อม test
 6. เปิด test result ให้กรรมการดู
 
 ## คำพูดสั้น ๆ ตอนอธิบาย
 
-ผมไม่ได้สั่ง AI แค่ "เขียน code ให้หน่อย" แต่ผมแยก requirement, rule ของ AI, workflow, และ prompt หลักออกเป็นไฟล์ เพื่อควบคุม scope และทำให้ AI สร้าง code ที่ test ได้
+ผมไม่ได้สั่ง AI แค่ "เขียน code ให้หน่อย" แต่ผมแยก requirement, rule ของ AI, workflow, และ prompt หลักออกเป็นไฟล์ เพื่อควบคุม scope และให้ AI ทำ API ที่ test ได้จริง
