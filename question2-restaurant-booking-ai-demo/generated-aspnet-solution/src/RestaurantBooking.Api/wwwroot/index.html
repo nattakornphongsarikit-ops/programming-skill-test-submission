@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="th">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Restaurant Booking Demo</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <main class="app-shell">
+        <section class="workspace" aria-labelledby="page-title">
+            <div class="header">
+                <div>
+                    <p class="eyebrow">Restaurant Booking API</p>
+                    <h1 id="page-title">ทดลองจองโต๊ะ</h1>
+                </div>
+                <span class="status-pill">POST /reservations</span>
+            </div>
+
+            <div class="content-grid">
+                <form class="booking-form" id="reservation-form">
+                    <div class="field">
+                        <label for="reservation-date">วันที่จอง</label>
+                        <input id="reservation-date" name="reservationDate" type="date" value="2026-07-16" required>
+                    </div>
+
+                    <fieldset class="field">
+                        <legend>ประเภทโต๊ะ</legend>
+                        <div class="segmented-control">
+                            <label>
+                                <input type="radio" name="tableType" value="regular" checked>
+                                <span>regular</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="tableType" value="window">
+                                <span>window</span>
+                            </label>
+                        </div>
+                    </fieldset>
+
+                    <div class="field">
+                        <label for="deposit">ยอดมัดจำ</label>
+                        <div class="money-input">
+                            <input id="deposit" name="deposit" type="number" step="1" value="1000" required>
+                            <span>บาท</span>
+                        </div>
+                    </div>
+
+                    <button class="submit-button" type="submit" id="submit-button">
+                        ตรวจสอบการจอง
+                    </button>
+                </form>
+
+                <section class="result-panel" aria-live="polite" aria-labelledby="result-title">
+                    <h2 id="result-title">ผลลัพธ์</h2>
+                    <div class="result-state idle" id="result-state">
+                        <p class="result-message" id="result-message">กรอกข้อมูลแล้วกดตรวจสอบ</p>
+                        <dl class="response-detail">
+                            <div>
+                                <dt>HTTP</dt>
+                                <dd id="result-http">-</dd>
+                            </div>
+                            <div>
+                                <dt>Code</dt>
+                                <dd id="result-code">-</dd>
+                            </div>
+                        </dl>
+                    </div>
+                </section>
+            </div>
+        </section>
+    </main>
+
+    <script src="/app.js"></script>
+</body>
+</html>
