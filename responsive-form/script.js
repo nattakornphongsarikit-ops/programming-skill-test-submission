@@ -1,5 +1,5 @@
-const form = document.querySelector("#register-form");
-const statusText = document.querySelector("#form-status");
+const form = document.querySelector("#registerForm");
+const message = document.querySelector("#formMessage");
 
 const fields = {
   firstName: document.querySelector("#firstName"),
@@ -11,39 +11,45 @@ const fields = {
 
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-function setInvalid(fieldName, invalid) {
-  fields[fieldName].setAttribute("aria-invalid", invalid ? "true" : "false");
+function getFormValues() {
+  return Object.fromEntries(
+    Object.entries(fields).map(([name, field]) => [name, field.value.trim()])
+  );
 }
 
-function validateForm() {
-  const values = Object.fromEntries(
-    Object.entries(fields).map(([key, field]) => [key, field.value.trim()])
-  );
+function setFieldInvalid(fieldName, isInvalid) {
+  fields[fieldName].setAttribute("aria-invalid", isInvalid ? "true" : "false");
+}
 
-  Object.keys(fields).forEach((key) => setInvalid(key, false));
+function resetValidationState() {
+  Object.keys(fields).forEach((fieldName) => setFieldInvalid(fieldName, false));
+  message.textContent = "";
+  message.classList.remove("success");
+}
 
+function validateForm(values) {
   if (!values.firstName) {
-    setInvalid("firstName", true);
+    setFieldInvalid("firstName", true);
     return "Please enter your first name.";
   }
 
   if (!values.lastName) {
-    setInvalid("lastName", true);
+    setFieldInvalid("lastName", true);
     return "Please enter your last name.";
   }
 
   if (!emailPattern.test(values.email)) {
-    setInvalid("email", true);
+    setFieldInvalid("email", true);
     return "Please enter a valid email address.";
   }
 
   if (values.password.length < 8) {
-    setInvalid("password", true);
+    setFieldInvalid("password", true);
     return "Password must contain at least 8 characters.";
   }
 
   if (values.confirmPassword !== values.password) {
-    setInvalid("confirmPassword", true);
+    setFieldInvalid("confirmPassword", true);
     return "Password and confirm password do not match.";
   }
 
@@ -52,16 +58,15 @@ function validateForm() {
 
 form.addEventListener("submit", (event) => {
   event.preventDefault();
-  statusText.classList.remove("success");
+  resetValidationState();
 
-  const errorMessage = validateForm();
+  const errorMessage = validateForm(getFormValues());
   if (errorMessage) {
-    statusText.textContent = errorMessage;
+    message.textContent = errorMessage;
     return;
   }
 
   form.reset();
-  Object.keys(fields).forEach((key) => setInvalid(key, false));
-  statusText.textContent = "Registration data is valid.";
-  statusText.classList.add("success");
+  message.textContent = "Registration data is valid.";
+  message.classList.add("success");
 });

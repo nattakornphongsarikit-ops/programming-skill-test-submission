@@ -7,6 +7,7 @@ This workspace contains a complete answer package for the programming skill test
 - `responsive-form/index.html`: standalone responsive register form
 - `responsive-form/styles.css`: form layout and responsive styles
 - `responsive-form/script.js`: client-side validation
+- `responsive-form/EXPLANATION.md`: explanation for question 1
 - `dotnet-submission/`: ASP.NET Core Razor Pages and C# console versions
 - `answers/Programming_Skill_Test_Answers.md`: written answers for all questions
 - `answers/pattern.js`: runnable pattern solution for question 3
@@ -31,7 +32,7 @@ SQL scripts are written for Microsoft SQL Server / T-SQL.
 From PowerShell, move into this project folder before running Git commands:
 
 ```powershell
-cd "C:\Users\AOS-PC\Documents\Programming Skill Tests"
+cd "D:\git\programming-skill-test-submission"
 git status
 ```
 

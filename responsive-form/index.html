@@ -3,45 +3,46 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Register</title>
+    <title>Register Form</title>
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
-    <main class="auth-shell">
-      <section class="register-card" aria-labelledby="form-title">
-        <header class="card-header">
-          <h1 id="form-title">Register</h1>
+    <main class="page-shell">
+      <section class="register-card" aria-labelledby="register-title">
+        <header class="register-header">
+          <h1 id="register-title">Register</h1>
           <p>Create your account. It's free and only takes a minute.</p>
         </header>
 
-        <form id="register-form" novalidate>
-          <div class="name-grid">
-            <label>
+        <form id="registerForm" novalidate>
+          <div class="name-row">
+            <label class="field">
               <span class="sr-only">First Name</span>
               <input id="firstName" name="firstName" type="text" autocomplete="given-name" placeholder="First Name">
             </label>
-            <label>
+
+            <label class="field">
               <span class="sr-only">Last Name</span>
               <input id="lastName" name="lastName" type="text" autocomplete="family-name" placeholder="Last Name">
             </label>
           </div>
 
-          <label>
+          <label class="field">
             <span class="sr-only">Email</span>
             <input id="email" name="email" type="email" autocomplete="email" placeholder="Email">
           </label>
 
-          <label>
+          <label class="field">
             <span class="sr-only">Password</span>
             <input id="password" name="password" type="password" autocomplete="new-password" placeholder="Password">
           </label>
 
-          <label>
+          <label class="field">
             <span class="sr-only">Confirm Password</span>
             <input id="confirmPassword" name="confirmPassword" type="password" autocomplete="new-password" placeholder="Confirm Password">
           </label>
 
-          <p class="form-status" id="form-status" aria-live="polite"></p>
+          <p id="formMessage" class="form-message" aria-live="polite"></p>
 
           <button type="submit">Register Now</button>
         </form>
