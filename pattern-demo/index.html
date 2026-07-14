@@ -36,6 +36,27 @@
         white-space: pre-wrap;
       }
 
+      form {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 14px;
+      }
+
+      label {
+        color: #9cdcfe;
+      }
+
+      input {
+        flex: 1;
+        min-width: 0;
+        border: 0;
+        outline: 0;
+        background: transparent;
+        color: #f2f2f2;
+        font: inherit;
+      }
+
       pre {
         margin: 0;
         color: #ffffff;
@@ -52,7 +73,10 @@
   <body>
     <main>
       <section class="terminal" aria-label="Console output">
-        <p class="line">PS D:\git\programming-skill-test-submission&gt; node answers/pattern.js 1 4 3</p>
+        <form id="command-form">
+          <label for="command">PS D:\git\programming-skill-test-submission&gt;</label>
+          <input id="command" name="command" value="node answers/pattern.js 1 4 3" autocomplete="off">
+        </form>
         <p class="line comment">// Output</p>
         <pre id="output"></pre>
       </section>
@@ -60,7 +84,30 @@
 
     <script src="pattern.js"></script>
     <script>
-      document.querySelector("#output").textContent = buildPattern("1", 4, 3).join("\n");
+      const form = document.querySelector("#command-form");
+      const command = document.querySelector("#command");
+      const output = document.querySelector("#output");
+
+      function runCommand() {
+        const parts = command.value.trim().split(/\s+/);
+        const character = parts[2] || "1";
+        const maxCount = parsePositiveInteger(parts[3], 4, "maxCount");
+        const rounds = parsePositiveInteger(parts[4], 3, "rounds");
+
+        output.textContent = buildPattern(character, maxCount, rounds).join("\n");
+      }
+
+      form.addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        try {
+          runCommand();
+        } catch (error) {
+          output.textContent = error.message;
+        }
+      });
+
+      runCommand();
     </script>
   </body>
 </html>
