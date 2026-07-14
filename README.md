@@ -5,6 +5,7 @@ This workspace contains a complete answer package for the programming skill test
 ## Files
 
 - `responsive-form/index.html`: standalone responsive register form
+- `index.html`: English landing page for live demos
 - `responsive-form/styles.css`: form layout and responsive styles
 - `responsive-form/script.js`: client-side validation
 - `responsive-form/EXPLANATION.md`: explanation for question 1

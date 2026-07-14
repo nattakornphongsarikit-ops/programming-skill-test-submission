@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Programming Skill Test Submission</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #eef3f6;
+        --card: #ffffff;
+        --text: #17202e;
+        --muted: #667085;
+        --border: #d8dee8;
+        --primary: #1d5fd1;
+        --primary-dark: #164aa4;
+        font-family: "Segoe UI", Arial, sans-serif;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        background: var(--bg);
+        color: var(--text);
+      }
+
+      main {
+        width: min(960px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 56px 0;
+      }
+
+      header {
+        margin-bottom: 24px;
+      }
+
+      h1 {
+        margin: 0 0 10px;
+        font-size: clamp(2rem, 5vw, 3.2rem);
+        line-height: 1.1;
+      }
+
+      p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.55;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px;
+        margin-top: 32px;
+      }
+
+      .card {
+        display: grid;
+        gap: 16px;
+        padding: 24px;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        background: var(--card);
+        box-shadow: 0 16px 40px rgba(23, 32, 46, 0.08);
+      }
+
+      h2 {
+        margin: 0;
+        font-size: 1.25rem;
+      }
+
+      a {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 42px;
+        padding: 0 16px;
+        border-radius: 6px;
+        background: var(--primary);
+        color: #fff;
+        font-weight: 700;
+        text-decoration: none;
+      }
+
+      a:hover {
+        background: var(--primary-dark);
+      }
+
+      code {
+        display: block;
+        margin-top: 12px;
+        padding: 10px 12px;
+        border: 1px solid var(--border);
+        border-radius: 6px;
+        background: #f7f9fc;
+        color: var(--text);
+        font-size: 0.88rem;
+        overflow-wrap: anywhere;
+      }
+
+      @media (max-width: 720px) {
+        main {
+          padding: 32px 0;
+        }
+
+        .grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <header>
+        <h1>Programming Skill Test Submission</h1>
+        <p>
+          This page collects the live demo links for the programming skill test.
+        </p>
+      </header>
+
+      <section class="grid" aria-label="Demo links">
+        <article class="card">
+          <div>
+            <h2>Question 1: Responsive Form</h2>
+            <p>HTML, CSS, and JavaScript register form with client-side validation.</p>
+          </div>
+          <a href="/responsive-form/">Open Responsive Form</a>
+        </article>
+
+        <article class="card">
+          <div>
+            <h2>Question 2: Frontend Demo</h2>
+            <p>A simple web form that calls the restaurant booking API.</p>
+          </div>
+          <a href="http://122.155.174.34:8082/">Open Frontend Demo</a>
+        </article>
+
+        <article class="card">
+          <div>
+            <h2>Question 2: API Endpoint</h2>
+            <p>POST endpoint for validating restaurant table reservations.</p>
+            <code>POST http://122.155.174.34:8082/reservations</code>
+          </div>
+          <a href="http://122.155.174.34:8082/">Test API from Frontend</a>
+        </article>
+      </section>
+    </main>
+  </body>
+</html>
