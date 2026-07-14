@@ -10,7 +10,6 @@
 - `PROMPT.md`: prompt หลักที่ใช้ส่งให้ AI
 - `DEMO_CHAT_PROMPT.md`: ข้อความแบบธรรมชาติสำหรับ copy ไปเปิด new chat
 - `FRONTEND_FOLLOWUP_PROMPT.md`: ข้อความ follow-up สำหรับเพิ่มหน้า frontend ในแชทเดิม
-- `aspnet-core-api/`: ตัวอย่าง C# ASP.NET Core API ที่ทำไว้ให้ดู
 
 ## Demo steps
 
