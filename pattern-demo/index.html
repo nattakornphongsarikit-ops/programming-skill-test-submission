@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Pattern Logic Demo</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <main class="shell">
+      <section class="panel">
+        <header>
+          <p class="eyebrow">Question 3</p>
+          <h1>Pattern Logic Demo</h1>
+          <p class="intro">
+            Build an increasing and decreasing text pattern from user inputs.
+          </p>
+        </header>
+
+        <div class="workspace">
+          <form id="pattern-form" class="controls">
+            <label>
+              Character
+              <input name="character" type="text" value="1" maxlength="4">
+            </label>
+
+            <label>
+              Maximum count
+              <input name="maxCount" type="number" value="4" min="1">
+            </label>
+
+            <label>
+              Rounds
+              <input name="rounds" type="number" value="3" min="1">
+            </label>
+
+            <button type="submit">Generate Pattern</button>
+          </form>
+
+          <section class="result" aria-live="polite">
+            <div class="result-header">
+              <h2>Output</h2>
+              <p id="message"></p>
+            </div>
+            <pre id="pattern-output"></pre>
+          </section>
+        </div>
+      </section>
+    </main>
+
+    <script src="pattern.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
