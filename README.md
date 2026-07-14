@@ -8,6 +8,7 @@ This workspace contains a complete answer package for the programming skill test
 - `responsive-form/styles.css`: form layout and responsive styles
 - `responsive-form/script.js`: client-side validation
 - `responsive-form/EXPLANATION.md`: explanation for question 1
+- `question2-restaurant-booking-ai-demo/`: AI workflow demo for question 2
 - `dotnet-submission/`: ASP.NET Core Razor Pages and C# console versions
 - `answers/Programming_Skill_Test_Answers.md`: written answers for all questions
 - `answers/pattern.js`: runnable pattern solution for question 3
