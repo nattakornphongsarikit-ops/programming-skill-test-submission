@@ -23,12 +23,12 @@
 - response message เป็นภาษาไทย
 - เขียน test ให้ครอบคลุม business rule
 - review code ตัวเองท้ายงาน
+- ถ้ามี follow-up ขอ frontend ให้เพิ่มหน้าเว็บเรียบง่ายที่เรียก API เดิม
 
 ## สิ่งที่ไม่ต้องทำ
 
 - ไม่ต้องทำ database
 - ไม่ต้องทำ login
-- ไม่ต้องทำ frontend
 - ไม่ต้องเพิ่มระบบ booking จริง
 - ไม่ต้องเพิ่ม feature นอกโจทย์
 - ไม่ต้องเปลี่ยน business rule เอง

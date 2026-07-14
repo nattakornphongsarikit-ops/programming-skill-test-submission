@@ -9,6 +9,7 @@
 - `SKILL.md`: workflow สำหรับวิเคราะห์ ออกแบบ เขียน test และ review
 - `PROMPT.md`: prompt หลักที่ใช้ส่งให้ AI
 - `DEMO_CHAT_PROMPT.md`: ข้อความแบบธรรมชาติสำหรับ copy ไปเปิด new chat
+- `FRONTEND_FOLLOWUP_PROMPT.md`: ข้อความ follow-up สำหรับเพิ่มหน้า frontend ในแชทเดิม
 - `aspnet-core-api/`: ตัวอย่าง C# ASP.NET Core API ที่ทำไว้ให้ดู
 
 ## Demo steps
@@ -18,7 +19,8 @@
 3. ส่งข้อความจาก `DEMO_CHAT_PROMPT.md`
 4. ให้ AI สรุป requirement ก่อนเขียน code
 5. ให้ AI สร้าง ASP.NET Core API endpoint `POST /reservations` พร้อม test
-6. เปิด test result ให้กรรมการดู
+6. ส่งข้อความจาก `FRONTEND_FOLLOWUP_PROMPT.md` เพื่อให้ AI เพิ่มหน้า frontend ต่อในแชทเดิม
+7. เปิด test result และหน้า frontend ให้กรรมการดู
 
 ## คำพูดสั้น ๆ ตอนอธิบาย
 
