@@ -26,7 +26,7 @@ The form uses `novalidate` because I want to handle validation with my own JavaS
 
 The page is centered with CSS Grid using `.page-shell`.
 
-The form uses my own clean style instead of copying the sample exactly. I used a white card, teal accent color, clear spacing, and a subtle shadow.
+The form follows the sample layout, but I changed the colors and background to make it slightly different.
 
 The first name and last name fields use a two-column grid on desktop:
 
@@ -73,7 +73,7 @@ Validation rules:
 
 I separated the work into structure, style, and behavior.
 
-HTML is responsible for the form content. CSS is responsible for the responsive layout and my custom visual design. JavaScript is responsible for validation before submit.
+HTML is responsible for the form content. CSS is responsible for the responsive layout, colors, and background. JavaScript is responsible for validation before submit.
 
 For responsiveness, I used CSS Grid. On desktop, first name and last name are side by side. On mobile, the media query changes the grid to one column so the form is easier to read.
 

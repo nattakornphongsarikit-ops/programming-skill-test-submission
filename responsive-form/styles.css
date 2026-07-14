@@ -1,17 +1,17 @@
 :root {
   color-scheme: light;
-  --page-bg: #eef3f1;
-  --card-bg: #ffffff;
-  --text: #21302f;
-  --muted: #6f7d7b;
-  --line: #dce5e2;
-  --input-border: #ccd8d5;
-  --focus: #237f74;
+  --page-bg: #536878;
+  --card-bg: #f8fafc;
+  --text: #46515d;
+  --muted: #8492a1;
+  --line: #d8e0e7;
+  --input-border: #cbd5df;
+  --focus: #2563eb;
   --danger: #b42318;
   --success: #1f7a42;
-  --button: #237f74;
-  --button-hover: #1c685f;
-  --shadow: 0 18px 36px rgba(34, 57, 54, 0.14);
+  --button: #16a34a;
+  --button-hover: #15803d;
+  --shadow: 0 2px 8px rgba(20, 32, 42, 0.3);
 }
 
 * {
@@ -38,37 +38,41 @@ body {
 }
 
 .register-card {
-  width: min(520px, calc(100vw - 32px));
-  padding: 34px 32px 38px;
+  width: min(430px, calc(100vw - 32px));
+  padding: 26px 24px 38px;
   background: var(--card-bg);
-  border: 1px solid var(--line);
-  border-top: 5px solid var(--button);
-  border-radius: 8px;
+  border-radius: 3px;
   box-shadow: var(--shadow);
 }
 
 .register-header {
-  margin-bottom: 28px;
-  text-align: left;
+  margin-bottom: 26px;
+  text-align: center;
 }
 
 .register-header h1 {
+  display: flex;
+  align-items: center;
+  gap: 14px;
   margin: 0;
   color: var(--text);
-  font-size: 32px;
-  font-weight: 700;
+  font-size: 28px;
+  font-weight: 400;
   line-height: 1.2;
 }
 
 .register-header h1::before,
 .register-header h1::after {
-  content: none;
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--line);
 }
 
 .register-header p {
-  margin: 8px 0 0;
+  margin: 10px 0 0;
   color: var(--muted);
-  font-size: 14px;
+  font-size: 13px;
   line-height: 1.45;
 }
 
@@ -89,11 +93,11 @@ form {
 
 input {
   width: 100%;
-  min-height: 46px;
-  padding: 0 14px;
+  min-height: 42px;
+  padding: 0 12px;
   border: 1px solid var(--input-border);
-  border-radius: 7px;
-  background: #fbfdfc;
+  border-radius: 3px;
+  background: #fff;
   color: var(--text);
   font-size: 14px;
   outline: none;
@@ -106,7 +110,7 @@ input::placeholder {
 
 input:focus {
   border-color: var(--focus);
-  box-shadow: 0 0 0 3px rgba(35, 127, 116, 0.14);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.14);
 }
 
 input[aria-invalid="true"] {
@@ -127,10 +131,10 @@ input[aria-invalid="true"] {
 
 button {
   width: 100%;
-  min-height: 48px;
-  margin-top: 12px;
+  min-height: 44px;
+  margin-top: 10px;
   border: 0;
-  border-radius: 7px;
+  border-radius: 3px;
   background: var(--button);
   color: #fff;
   cursor: pointer;
@@ -166,12 +170,13 @@ button:active {
   }
 
   .register-card {
-    width: min(430px, calc(100vw - 32px));
+    width: min(340px, calc(100vw - 32px));
     padding: 24px 18px 30px;
   }
 
   .register-header h1 {
-    font-size: 28px;
+    gap: 10px;
+    font-size: 25px;
   }
 
   .name-row {
