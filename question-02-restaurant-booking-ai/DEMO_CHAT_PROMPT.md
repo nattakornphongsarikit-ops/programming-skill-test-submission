@@ -6,7 +6,7 @@
 
 ผมอยากทำให้ดูจริงจังกว่าฟังก์ชันธรรมดา เลยอยากให้ทำเป็น C# ASP.NET Core API เล็ก ๆ แทน
 
-ผมเตรียมไฟล์ไว้ในโฟลเดอร์ `question2-restaurant-booking-ai-demo/` แล้ว:
+ผมเตรียมไฟล์ไว้ในโฟลเดอร์ `question-02-restaurant-booking-ai/` แล้ว:
 
 - `AGENTS.md`
 - `REQUIREMENTS.md`
@@ -29,6 +29,6 @@
 
 ช่วยสร้างไฟล์ code และ test ไว้ใน:
 
-`question2-restaurant-booking-ai-demo/generated-aspnet-solution/`
+`question-02-restaurant-booking-ai/generated-aspnet-solution/`
 
 แล้วรัน test ให้ดูด้วยครับ

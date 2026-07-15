@@ -27,6 +27,6 @@
 
 ช่วยสร้าง frontend ไว้ใน solution เดิม:
 
-`question2-restaurant-booking-ai-demo/generated-aspnet-solution/`
+`question-02-restaurant-booking-ai/generated-aspnet-solution/`
 
 และช่วยบอกวิธี run + วิธีทดสอบสั้น ๆ ด้วยครับ

@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="720" viewBox="0 0 1100 720">
+  <defs>
+    <style>
+      .box { fill: white; stroke: black; stroke-width: 1.5; }
+      .title { font: 700 16px Tahoma, Arial, sans-serif; fill: black; }
+      .text { font: 13px Tahoma, Arial, sans-serif; fill: black; }
+      .line { stroke: black; stroke-width: 1.5; fill: none; }
+      .label { font: 12px Tahoma, Arial, sans-serif; fill: black; }
+    </style>
+  </defs>
+
+  <rect width="1100" height="720" fill="white"/>
+  <text x="40" y="35" class="title">ER Diagram ระบบการเรียนการสอน</text>
+
+  <!-- Students -->
+  <rect x="40" y="80" width="230" height="150" class="box"/>
+  <text x="60" y="105" class="title">Students - นักเรียน</text>
+  <text x="60" y="130" class="text">PK StudentId</text>
+  <text x="60" y="150" class="text">StudentCode</text>
+  <text x="60" y="170" class="text">FirstName</text>
+  <text x="60" y="190" class="text">LastName</text>
+  <text x="60" y="210" class="text">Email, Phone</text>
+
+  <!-- Enrollments -->
+  <rect x="410" y="80" width="230" height="150" class="box"/>
+  <text x="430" y="105" class="title">Enrollments - ลงทะเบียน</text>
+  <text x="430" y="130" class="text">PK EnrollmentId</text>
+  <text x="430" y="150" class="text">FK StudentId</text>
+  <text x="430" y="170" class="text">FK CourseId</text>
+  <text x="430" y="190" class="text">EnrolledAt</text>
+  <text x="430" y="210" class="text">EnrollmentStatus (1-3)</text>
+
+  <!-- Courses -->
+  <rect x="780" y="80" width="230" height="150" class="box"/>
+  <text x="800" y="105" class="title">Courses - รายวิชา</text>
+  <text x="800" y="130" class="text">PK CourseId</text>
+  <text x="800" y="150" class="text">CourseCode</text>
+  <text x="800" y="170" class="text">CourseName</text>
+  <text x="800" y="190" class="text">FK TeacherId</text>
+  <text x="800" y="210" class="text">Description</text>
+
+  <!-- Teachers -->
+  <rect x="780" y="330" width="230" height="150" class="box"/>
+  <text x="800" y="355" class="title">Teachers - ครู</text>
+  <text x="800" y="380" class="text">PK TeacherId</text>
+  <text x="800" y="400" class="text">TeacherCode</text>
+  <text x="800" y="420" class="text">FirstName</text>
+  <text x="800" y="440" class="text">LastName</text>
+  <text x="800" y="460" class="text">Email, Phone</text>
+
+  <!-- Teaching Sessions -->
+  <rect x="410" y="330" width="230" height="170" class="box"/>
+  <text x="430" y="355" class="title">TeachingSessions - ครั้งที่สอน</text>
+  <text x="430" y="380" class="text">PK SessionId</text>
+  <text x="430" y="400" class="text">FK CourseId</text>
+  <text x="430" y="420" class="text">FK TeacherId</text>
+  <text x="430" y="440" class="text">SessionDate</text>
+  <text x="430" y="460" class="text">StartTime, EndTime</text>
+  <text x="430" y="480" class="text">Topic, TeachingNote</text>
+
+  <!-- Attendances -->
+  <rect x="40" y="330" width="230" height="170" class="box"/>
+  <text x="60" y="355" class="title">Attendances - เข้าเรียน</text>
+  <text x="60" y="380" class="text">PK AttendanceId</text>
+  <text x="60" y="400" class="text">FK SessionId</text>
+  <text x="60" y="420" class="text">FK StudentId</text>
+  <text x="60" y="440" class="text">AttendanceStatus (1-4)</text>
+  <text x="60" y="460" class="text">CheckedAt</text>
+  <text x="60" y="480" class="text">Remark</text>
+
+  <!-- Relationships -->
+  <line x1="270" y1="155" x2="410" y2="155" class="line"/>
+  <text x="302" y="145" class="label">1 คน ลงทะเบียนได้หลายรายการ</text>
+
+  <line x1="640" y1="155" x2="780" y2="155" class="line"/>
+  <text x="672" y="145" class="label">หลายรายการ อยู่ใน 1 วิชา</text>
+
+  <line x1="895" y1="230" x2="895" y2="330" class="line"/>
+  <text x="910" y="285" class="label">ครู 1 คน ต่อ 1 วิชา</text>
+
+  <line x1="780" y1="405" x2="640" y2="405" class="line"/>
+  <text x="670" y="395" class="label">ครูสอนได้หลายครั้ง</text>
+
+  <line x1="525" y1="230" x2="525" y2="330" class="line"/>
+  <text x="540" y="285" class="label">วิชามีหลายครั้งที่สอน</text>
+
+  <line x1="410" y1="415" x2="270" y2="415" class="line"/>
+  <text x="300" y="405" class="label">1 ครั้ง มีหลายการเข้าเรียน</text>
+
+  <line x1="155" y1="230" x2="155" y2="330" class="line"/>
+  <text x="170" y="285" class="label">นักเรียนมีหลายประวัติเข้าเรียน</text>
+
+  <!-- Short notes -->
+  <text x="40" y="570" class="title">คำอธิบายความสัมพันธ์</text>
+  <text x="40" y="595" class="text">1. Students กับ Courses เป็น many-to-many จึงใช้ Enrollments เป็นตารางกลาง</text>
+  <text x="40" y="615" class="text">2. Teachers กับ Courses เป็น one-to-one คือครูหนึ่งคนสอนหนึ่งรายวิชา</text>
+  <text x="40" y="635" class="text">3. TeachingSessions เก็บรายละเอียดการสอนแต่ละครั้ง เช่น วันที่ เวลา และหัวข้อ</text>
+  <text x="40" y="655" class="text">4. Attendances เก็บการเข้าเรียนของนักเรียนแต่ละคนในแต่ละครั้งที่สอน</text>
+  <text x="40" y="675" class="text">5. Status เก็บเป็นตัวเลข: Enrollment 1=กำลังเรียน 2=เรียนจบ 3=ถอน, Attendance 1=มา 2=สาย 3=ขาด 4=ลา</text>
+</svg>

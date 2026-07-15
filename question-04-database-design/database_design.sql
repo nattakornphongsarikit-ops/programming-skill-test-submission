@@ -38,15 +38,16 @@ CREATE TABLE Enrollments
     StudentId INT NOT NULL,
     CourseId INT NOT NULL,
     EnrolledAt DATETIME2 NOT NULL DEFAULT SYSUTCDATETIME(),
-    EnrollmentStatus VARCHAR(20) NOT NULL DEFAULT 'active',
+    EnrollmentStatus TINYINT NOT NULL DEFAULT 1,
     CONSTRAINT FK_Enrollments_Students
         FOREIGN KEY (StudentId) REFERENCES Students(StudentId),
     CONSTRAINT FK_Enrollments_Courses
         FOREIGN KEY (CourseId) REFERENCES Courses(CourseId),
     CONSTRAINT UQ_Enrollments_Student_Course UNIQUE (StudentId, CourseId),
     CONSTRAINT CK_Enrollments_Status
-        CHECK (EnrollmentStatus IN ('active', 'completed', 'dropped'))
+        CHECK (EnrollmentStatus IN (1, 2, 3))
 );
+-- EnrollmentStatus: 1=กำลังเรียน, 2=เรียนจบ, 3=ถอนรายวิชา
 
 CREATE TABLE TeachingSessions
 (
@@ -70,7 +71,7 @@ CREATE TABLE Attendances
     AttendanceId INT IDENTITY(1,1) PRIMARY KEY,
     SessionId INT NOT NULL,
     StudentId INT NOT NULL,
-    AttendanceStatus VARCHAR(20) NOT NULL,
+    AttendanceStatus TINYINT NOT NULL,
     CheckedAt DATETIME2 NOT NULL DEFAULT SYSUTCDATETIME(),
     Remark NVARCHAR(500) NULL,
     CONSTRAINT FK_Attendances_Sessions
@@ -79,12 +80,12 @@ CREATE TABLE Attendances
         FOREIGN KEY (StudentId) REFERENCES Students(StudentId),
     CONSTRAINT UQ_Attendances_Session_Student UNIQUE (SessionId, StudentId),
     CONSTRAINT CK_Attendances_Status
-        CHECK (AttendanceStatus IN ('present', 'late', 'absent', 'leave'))
+        CHECK (AttendanceStatus IN (1, 2, 3, 4))
 );
+-- AttendanceStatus: 1=มาเรียน, 2=มาสาย, 3=ขาดเรียน, 4=ลา
 
-CREATE INDEX IX_Courses_TeacherId ON Courses(TeacherId);
-CREATE INDEX IX_Enrollments_CourseId ON Enrollments(CourseId);
-CREATE INDEX IX_Enrollments_StudentId ON Enrollments(StudentId);
+-- Primary keys and unique constraints are indexed automatically.
+CREATE INDEX IX_Enrollments_CourseStatus ON Enrollments(CourseId, EnrollmentStatus);
 CREATE INDEX IX_TeachingSessions_CourseDate ON TeachingSessions(CourseId, SessionDate);
 CREATE INDEX IX_TeachingSessions_TeacherDate ON TeachingSessions(TeacherId, SessionDate);
 CREATE INDEX IX_Attendances_StudentId ON Attendances(StudentId);

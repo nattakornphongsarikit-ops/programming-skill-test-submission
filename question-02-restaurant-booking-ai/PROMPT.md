@@ -35,4 +35,4 @@
 
 ช่วยสร้างไฟล์ไว้ใน:
 
-`question2-restaurant-booking-ai-demo/generated-aspnet-solution/`
+`question-02-restaurant-booking-ai/generated-aspnet-solution/`

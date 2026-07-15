@@ -1,40 +1,50 @@
 # Programming Skill Test Submission
 
-This workspace contains a complete answer package for the programming skill test.
+รวมคำตอบ Programming Skill Test โดยแยกโฟลเดอร์ตามข้อ เพื่อให้เปิดดูใน GitHub ได้ง่าย
 
-## Files
+## Project Structure
 
-- `responsive-form/index.html`: standalone responsive register form
-- `index.html`: English landing page for live demos
-- `responsive-form/styles.css`: form layout and responsive styles
-- `responsive-form/script.js`: client-side validation
-- `responsive-form/EXPLANATION.md`: explanation for question 1
-- `question2-restaurant-booking-ai-demo/`: AI workflow demo for question 2
-- `pattern-demo/`: interactive JavaScript demo for question 3
-- `answers/Programming_Skill_Test_Answers.md`: written answers for all questions
-- `answers/pattern.js`: runnable pattern solution for question 3
-- `answers/database_design.sql`: database design DDL for question 4
-- `answers/cursor_loop.sql`: cursor loop script for question 5
+| Folder | Content |
+| --- | --- |
+| `question-01-responsive-form/` | HTML/CSS/JavaScript responsive register form |
+| `question-02-restaurant-booking-ai/` | Prompt files, AI workflow, ASP.NET Core API source, and frontend |
+| `question-03-pattern-output/` | JavaScript pattern logic with browser demo and CLI runner |
+| `question-04-database-design/` | ER diagram, database DDL, live MySQL script, and index notes |
+| `question-05-sql-cursor/` | SQL Server cursor answer and MySQL cursor demo |
 
-## How to run
+## Important Files
 
-Open `responsive-form/index.html` in a browser.
+- `index.html`: landing page for live demo links
+- `SUBMISSION_SUMMARY.md`: short written answer summary
+- `question-01-responsive-form/index.html`: open directly in browser
+- `question-03-pattern-output/index.html`: browser demo for pattern output
+- `question-04-database-design/database_er_diagram.svg`: simple ER diagram
+- `question-04-database-design/database_index_notes.md`: index list with reasons
 
-Run the pattern answer:
+## How to Run
+
+Open question 1:
+
+```text
+question-01-responsive-form/index.html
+```
+
+Run question 3 with Node.js:
 
 ```bash
-node answers/pattern.js 1 4 3
+node question-03-pattern-output/pattern-cli.js 1 4 3
 ```
 
-SQL scripts are written for Microsoft SQL Server / T-SQL.
+Run question 5 on MySQL demo:
 
-## Git setup
-
-From PowerShell, move into this project folder before running Git commands:
-
-```powershell
-cd "D:\git\programming-skill-test-submission"
-git status
+```sql
+CALL sp_show_customers_cursor();
 ```
 
-Then commit and push to a GitHub repository.
+## Live Demo
+
+- Main page: http://122.155.174.34:8081/
+- Question 1: http://122.155.174.34:8081/question-01-responsive-form/
+- Question 2 frontend/API: http://122.155.174.34:8082/
+- Question 3: http://122.155.174.34:8081/question-03-pattern-output/
+- phpMyAdmin: http://122.155.174.34:8083/
