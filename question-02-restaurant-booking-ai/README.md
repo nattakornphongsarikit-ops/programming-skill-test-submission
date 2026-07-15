@@ -4,23 +4,19 @@
 
 ## Files
 
-- `AGENTS.md`: กำหนดบทบาทและกฎของ AI
-- `REQUIREMENTS.md`: business rules ของการจองโต๊ะ
-- `SKILL.md`: workflow สำหรับวิเคราะห์ ออกแบบ เขียน test และ review
-- `PROMPT.md`: prompt หลักที่ใช้ส่งให้ AI
 - `DEMO_CHAT_PROMPT.md`: ข้อความแบบธรรมชาติสำหรับ copy ไปเปิด new chat
 - `FRONTEND_FOLLOWUP_PROMPT.md`: ข้อความ follow-up สำหรับเพิ่มหน้า frontend ในแชทเดิม
+- `generated-aspnet-solution/`: code ที่ AI สร้างจาก prompt
 
 ## Demo steps
 
 1. เปิด new chat ใน AI/Codex
-2. แนบหรือเปิดไฟล์ 4 ไฟล์นี้ให้ AI อ่าน
-3. ส่งข้อความจาก `DEMO_CHAT_PROMPT.md`
-4. ให้ AI สรุป requirement ก่อนเขียน code
-5. ให้ AI สร้าง ASP.NET Core API endpoint `POST /reservations` พร้อม test
-6. ส่งข้อความจาก `FRONTEND_FOLLOWUP_PROMPT.md` เพื่อให้ AI เพิ่มหน้า frontend ต่อในแชทเดิม
-7. เปิด test result และหน้า frontend ให้กรรมการดู
+2. ส่งข้อความจาก `DEMO_CHAT_PROMPT.md`
+3. ให้ AI สรุป requirement ก่อนเขียน code
+4. ให้ AI สร้าง ASP.NET Core API endpoint `POST /reservations` พร้อม test
+5. ส่งข้อความจาก `FRONTEND_FOLLOWUP_PROMPT.md` เพื่อให้ AI เพิ่มหน้า frontend ต่อในแชทเดิม
+6. เปิด test result และหน้า frontend ให้กรรมการดู
 
 ## คำพูดสั้น ๆ ตอนอธิบาย
 
-ผมไม่ได้สั่ง AI แค่ "เขียน code ให้หน่อย" แต่ผมแยก requirement, rule ของ AI, workflow, และ prompt หลักออกเป็นไฟล์ เพื่อควบคุม scope และให้ AI ทำ API ที่ test ได้จริง
+ผมไม่ได้สั่ง AI แค่ "เขียน code ให้หน่อย" แต่เขียน prompt ให้มี requirement, scope, rule, test case และ output folder ชัดเจน เพื่อให้ AI ทำ API ที่ test ได้จริง
