@@ -1,25 +1,26 @@
 # Programming Skill Test Submission
 
-รวมคำตอบ Programming Skill Test โดยแยกโฟลเดอร์ตามข้อ เพื่อให้เปิดดูใน GitHub ได้ง่าย
+รวมคำตอบ Programming Skill Test โดยแยกโฟลเดอร์ตามข้อ และเก็บในแต่ละข้อให้เห็นไฟล์ code/script เป็นหลัก
 
 ## Project Structure
 
 | Folder | Content |
 | --- | --- |
 | `question-01-responsive-form/` | HTML/CSS/JavaScript responsive register form |
-| `question-02-restaurant-booking-ai/` | Prompt files, AI workflow, ASP.NET Core API source, and frontend |
+| `question-02-restaurant-booking-ai/` | AI prompt files, ASP.NET Core API source, and frontend |
 | `question-03-pattern-output/` | JavaScript pattern logic with browser demo and CLI runner |
-| `question-04-database-design/` | ER diagram, database DDL, live MySQL script, and index notes |
+| `question-04-database-design/` | ER diagram image, database DDL, and live MySQL script |
 | `question-05-sql-cursor/` | SQL Server cursor answer and MySQL cursor demo |
 
 ## Important Files
 
 - `index.html`: landing page for live demo links
-- `SUBMISSION_SUMMARY.md`: short written answer summary
 - `question-01-responsive-form/index.html`: open directly in browser
 - `question-03-pattern-output/index.html`: browser demo for pattern output
 - `question-04-database-design/database_er_diagram.svg`: simple ER diagram
-- `question-04-database-design/database_index_notes.md`: index list with reasons
+- `question-04-database-design/database_design.sql`: SQL Server DDL
+- `question-04-database-design/teaching_system_mysql.sql`: MySQL script used on server
+- `question-05-sql-cursor/cursor_loop.sql`: SQL Server cursor answer
 
 ## How to Run
 
