@@ -1,11 +1,10 @@
-DROP DATABASE IF EXISTS teaching_system;
-CREATE DATABASE teaching_system
+CREATE DATABASE IF NOT EXISTS teaching_system
   CHARACTER SET utf8
   COLLATE utf8_general_ci;
 
 USE teaching_system;
 
-CREATE TABLE Teachers (
+CREATE TABLE IF NOT EXISTS Teachers (
   TeacherId INT AUTO_INCREMENT PRIMARY KEY COMMENT 'รหัสหลักของครู',
   TeacherCode VARCHAR(20) NOT NULL UNIQUE COMMENT 'รหัสครู',
   FirstName VARCHAR(100) NOT NULL COMMENT 'ชื่อครู',
@@ -15,7 +14,7 @@ CREATE TABLE Teachers (
   CreatedAt TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'วันที่สร้างข้อมูลครู'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='ข้อมูลครู';
 
-CREATE TABLE Students (
+CREATE TABLE IF NOT EXISTS Students (
   StudentId INT AUTO_INCREMENT PRIMARY KEY COMMENT 'รหัสหลักของนักเรียน',
   StudentCode VARCHAR(20) NOT NULL UNIQUE COMMENT 'รหัสนักเรียน',
   FirstName VARCHAR(100) NOT NULL COMMENT 'ชื่อนักเรียน',
@@ -25,7 +24,7 @@ CREATE TABLE Students (
   CreatedAt TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'วันที่สร้างข้อมูลนักเรียน'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='ข้อมูลนักเรียน';
 
-CREATE TABLE Courses (
+CREATE TABLE IF NOT EXISTS Courses (
   CourseId INT AUTO_INCREMENT PRIMARY KEY COMMENT 'รหัสหลักของรายวิชา',
   CourseCode VARCHAR(20) NOT NULL UNIQUE COMMENT 'รหัสรายวิชา',
   CourseName VARCHAR(200) NOT NULL COMMENT 'ชื่อรายวิชา',
@@ -35,7 +34,7 @@ CREATE TABLE Courses (
   CONSTRAINT FK_Courses_Teachers FOREIGN KEY (TeacherId) REFERENCES Teachers(TeacherId)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='ข้อมูลรายวิชา';
 
-CREATE TABLE Enrollments (
+CREATE TABLE IF NOT EXISTS Enrollments (
   EnrollmentId INT AUTO_INCREMENT PRIMARY KEY COMMENT 'รหัสหลักของการลงทะเบียน',
   StudentId INT NOT NULL COMMENT 'รหัสนักเรียนที่ลงทะเบียน',
   CourseId INT NOT NULL COMMENT 'รหัสรายวิชาที่ลงทะเบียน',
@@ -47,7 +46,7 @@ CREATE TABLE Enrollments (
   INDEX IX_Enrollments_CourseStatus (CourseId, EnrollmentStatus)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='ข้อมูลการลงทะเบียนเรียน';
 
-CREATE TABLE TeachingSessions (
+CREATE TABLE IF NOT EXISTS TeachingSessions (
   SessionId INT AUTO_INCREMENT PRIMARY KEY COMMENT 'รหัสหลักของครั้งที่สอน',
   CourseId INT NOT NULL COMMENT 'รหัสรายวิชาที่สอน',
   TeacherId INT NOT NULL COMMENT 'รหัสครูผู้สอน',
@@ -62,7 +61,7 @@ CREATE TABLE TeachingSessions (
   INDEX IX_TeachingSessions_TeacherDate (TeacherId, SessionDate)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='ข้อมูลรายละเอียดการสอนแต่ละครั้ง';
 
-CREATE TABLE Attendances (
+CREATE TABLE IF NOT EXISTS Attendances (
   AttendanceId INT AUTO_INCREMENT PRIMARY KEY COMMENT 'รหัสหลักของการเข้าเรียน',
   SessionId INT NOT NULL COMMENT 'รหัสครั้งที่สอน',
   StudentId INT NOT NULL COMMENT 'รหัสนักเรียน',
@@ -77,25 +76,59 @@ CREATE TABLE Attendances (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='ข้อมูลการเข้าเรียนของนักเรียน';
 
 INSERT INTO Teachers (TeacherId, TeacherCode, FirstName, LastName, Email, Phone)
-VALUES (1, 'T001', 'สมชาย', 'ใจดี', 'somchai@example.com', '0800000001');
+VALUES (1, 'T001', 'สมชาย', 'ใจดี', 'somchai@example.com', '0800000001')
+ON DUPLICATE KEY UPDATE
+  TeacherCode = VALUES(TeacherCode),
+  FirstName = VALUES(FirstName),
+  LastName = VALUES(LastName),
+  Email = VALUES(Email),
+  Phone = VALUES(Phone);
 
 INSERT INTO Students (StudentId, StudentCode, FirstName, LastName, Email, Phone)
 VALUES
   (1, 'S001', 'อนันต์', 'สุขใจ', 'anan@example.com', '0810000001'),
-  (2, 'S002', 'มาลี', 'ดีมาก', 'malee@example.com', '0810000002');
+  (2, 'S002', 'มาลี', 'ดีมาก', 'malee@example.com', '0810000002')
+ON DUPLICATE KEY UPDATE
+  StudentCode = VALUES(StudentCode),
+  FirstName = VALUES(FirstName),
+  LastName = VALUES(LastName),
+  Email = VALUES(Email),
+  Phone = VALUES(Phone);
 
 INSERT INTO Courses (CourseId, CourseCode, CourseName, Description, TeacherId)
-VALUES (1, 'C001', 'การออกแบบฐานข้อมูล', 'วิชาพื้นฐานการออกแบบฐานข้อมูล', 1);
+VALUES (1, 'C001', 'การออกแบบฐานข้อมูล', 'วิชาพื้นฐานการออกแบบฐานข้อมูล', 1)
+ON DUPLICATE KEY UPDATE
+  CourseCode = VALUES(CourseCode),
+  CourseName = VALUES(CourseName),
+  Description = VALUES(Description),
+  TeacherId = VALUES(TeacherId);
 
 INSERT INTO Enrollments (EnrollmentId, StudentId, CourseId, EnrollmentStatus)
 VALUES
   (1, 1, 1, 1),
-  (2, 2, 1, 1);
+  (2, 2, 1, 1)
+ON DUPLICATE KEY UPDATE
+  StudentId = VALUES(StudentId),
+  CourseId = VALUES(CourseId),
+  EnrollmentStatus = VALUES(EnrollmentStatus);
 
 INSERT INTO TeachingSessions (SessionId, CourseId, TeacherId, SessionDate, StartTime, EndTime, Topic, TeachingNote)
-VALUES (1, 1, 1, CURDATE(), '09:00:00', '12:00:00', 'ER Diagram และความสัมพันธ์ของตาราง', 'ตัวอย่างข้อมูลการสอน');
+VALUES (1, 1, 1, CURDATE(), '09:00:00', '12:00:00', 'ER Diagram และความสัมพันธ์ของตาราง', 'ตัวอย่างข้อมูลการสอน')
+ON DUPLICATE KEY UPDATE
+  CourseId = VALUES(CourseId),
+  TeacherId = VALUES(TeacherId),
+  SessionDate = VALUES(SessionDate),
+  StartTime = VALUES(StartTime),
+  EndTime = VALUES(EndTime),
+  Topic = VALUES(Topic),
+  TeachingNote = VALUES(TeachingNote);
 
 INSERT INTO Attendances (AttendanceId, SessionId, StudentId, AttendanceStatus, Remark)
 VALUES
   (1, 1, 1, 1, 'เข้าเรียนตรงเวลา'),
-  (2, 1, 2, 2, 'มาสาย 10 นาที');
+  (2, 1, 2, 2, 'มาสาย 10 นาที')
+ON DUPLICATE KEY UPDATE
+  SessionId = VALUES(SessionId),
+  StudentId = VALUES(StudentId),
+  AttendanceStatus = VALUES(AttendanceStatus),
+  Remark = VALUES(Remark);
